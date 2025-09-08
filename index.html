@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Birthday Battle</title>
+  <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+  <div class="game">
+
+    <!-- Background -->
+    <div class="bg">
+      <div class="bg-sky"></div>
+      <div class="bg-ground"></div>
+    </div>
+
+    <!-- Opponent sprite -->
+    <div class="sprite sprite-opponent" id="opponent">
+      <div class="sprite-art tiger">🐯</div>
+    </div>
+
+    <!-- Player sprite -->
+    <div class="sprite sprite-player" id="player">
+      <div class="sprite-art player">🧑‍🎤</div>
+    </div>
+
+    <!-- Opponent stats bubble -->
+    <div class="stats stats-opponent" id="opponentStats">
+      <div class="stats-row">
+        <span class="stats-name">DERPY TIGER</span>
+        <span class="stats-level">Lv 42</span>
+      </div>
+      <div class="hp"><div class="hp-fill"></div></div>
+    </div>
+
+    <!-- Player stats bubble -->
+    <div class="stats stats-player" id="playerStats">
+      <div class="stats-row">
+        <span class="stats-name">RUMI</span>
+        <span class="stats-level">Lv 25</span>
+      </div>
+      <div class="hp"><div class="hp-fill"></div></div>
+    </div>
+
+    <!-- Bottom text panel -->
+    <div class="panel" id="panel">
+      <div class="panel-frame">
+        <div class="panel-inner">
+          <div class="panel-left">
+            <p id="promptText"></p>
+          </div>
+          <div class="panel-right" id="buttons"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hearts effect -->
+    <div class="hearts" id="hearts"></div>
+
+    <!-- Modal for surprise -->
+    <div class="modal" id="surpriseModal" style="display:none;">
+      <div class="modal-card">
+        <div class="modal-frame">
+          <div class="modal-title">Surprise! DERPY has a secret message for you!</div>
+          <button class="big-btn" id="openCardBtn">OPEN CARD</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Final birthday card -->
+    <div class="final" id="finalCard" style="display:none;">
+      <div class="final-card">
+        <div class="final-frame">
+          <div class="final-text">
+            🎉 Happy Birthday, Rumi! 🎉<br><br>
+            To my wonderful roommate and friend,<br>
+            May your year be full of joy, laughter, and love.<br>
+            You're one of a kind, and I’m so lucky to know you! 💖
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="renderer.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
+

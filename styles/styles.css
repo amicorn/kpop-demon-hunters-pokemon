@@ -1,0 +1,307 @@
+/* Fonts: retro for battle text, clean for UI */
+:root{
+  --orange: #ff9b42;
+  --orange-deep: #f67c1a;
+  --white: #ffffff;
+  --black: #111213;
+  --panel-h: 20vh; /* bottom fifth */
+  --border: 3px;
+  --radius: 14px;
+  --shadow: 0 8px 20px rgba(0,0,0,.15);
+  --text: #101114;
+}
+
+*{ box-sizing: border-box; }
+html,body{ height:100%; }
+body{
+  margin:0;
+  background:#e8f4ff;
+  color:var(--text);
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol", sans-serif;
+  overflow:hidden;
+}
+
+/* Game stage layout */
+.game{
+  position:relative;
+  width:100%;
+  height:100%;
+}
+
+/* Simple pleasant background */
+.bg{
+  position:absolute; inset:0;
+  overflow:hidden; z-index:0;
+}
+.bg-sky{
+  position:absolute; inset:0 0 30% 0;
+  background: linear-gradient(0deg, #c4e2ff, #f9fcff 60%);
+}
+.bg-ground{
+  position:absolute; left:0; right:0; bottom:0; height:40%;
+  background: radial-gradient(80% 100% at 50% 0%, #d5f5d6 0%, #b7ecb9 60%, #9ed7a1 100%);
+  border-top: 4px solid rgba(0,0,0,.06);
+}
+
+/* Sprites */
+.sprite{
+  position:absolute;
+  width:min(28vw, 180px);
+  height:min(28vw, 180px);
+  display:grid; place-items:center;
+  z-index:2;
+  filter: drop-shadow(0 12px 16px rgba(0,0,0,.15));
+}
+.sprite-art{
+  font-size:clamp(56px, 10vw, 120px);
+  line-height:1;
+  transform: translateZ(0);
+}
+.sprite-opponent{
+  /* starts left, slides to mid-right */
+  left:-40%;
+  top:20%;
+  animation: opponent-enter 1100ms ease-out forwards;
+  animation-delay: 300ms;
+}
+.sprite-player{
+  /* starts off-screen bottom-right, slides to center-left */
+  right:-40%;
+  bottom: var(--panel-h);
+  animation: player-enter 1100ms ease-out forwards;
+  animation-delay: 300ms;
+}
+
+/* Replace emoji look with soft badge */
+.sprite-art.tiger, .sprite-art.player{
+  background: #fff;
+  border-radius: 22%;
+  padding: .15em .2em;
+  box-shadow: inset 0 -6px 0 rgba(0,0,0,.05);
+}
+
+/* Stats bubbles */
+.stats{
+  position:absolute;
+  background:#fff;
+  border: var(--border) solid #000;
+  border-radius: 10px;
+  padding: 10px 12px;
+  width:min(56vw, 300px);
+  backdrop-filter: blur(2px);
+  z-index:3;
+  opacity:0; transform: translateY(-8px) scale(.98);
+  animation: pop-in 450ms ease-out forwards;
+  animation-delay: 1200ms;
+}
+.stats-opponent{ top:4%; left:4%; }
+.stats-player{
+  right:4%;
+  bottom: calc(var(--panel-h) + 10px);
+}
+
+.stats-row{
+  display:flex; justify-content:space-between; align-items:center;
+  font-family: "Press Start 2P", monospace;
+  font-size: clamp(10px, 1.9vw, 12px);
+  letter-spacing:.3px;
+}
+.stats-name{ font-weight:600; }
+.stats-level{ opacity:.9; }
+
+.hp{
+  margin-top:8px;
+  height:12px;
+  border: var(--border) solid #000;
+  border-radius: 999px;
+  background:#f1f1f1;
+  overflow:hidden;
+}
+.hp-fill{
+  height:100%;
+  background: linear-gradient(90deg, #38d26d, #83e67f);
+}
+
+/* Intro floating message */
+.floating-msg{
+  position:absolute;
+  left:50%; transform: translateX(-50%);
+  top:10px;
+  background:#000;
+  color:#fff;
+  padding:10px 14px;
+  border-radius: 10px;
+  font-family: "Press Start 2P", monospace;
+  font-size: clamp(10px, 1.8vw, 12px);
+  box-shadow: var(--shadow);
+  z-index:4;
+  opacity:0;
+  animation: fade-in 800ms ease forwards;
+  animation-delay: 1400ms;
+}
+
+/* Bottom panel styling */
+.panel{
+  position:absolute; left:0; right:0; bottom:0;
+  height:var(--panel-h);
+  z-index:5;
+  display:grid; place-items:stretch;
+}
+.panel-frame{
+  /* starts black then fades to orange frame with white content */
+  position:relative; margin:10px;
+  height:calc(100% - 20px);
+  border-radius: var(--radius);
+  background:#000;
+  animation: panel-reveal 800ms ease forwards;
+  animation-delay: 1700ms;
+  border: var(--border) solid #000;
+}
+.panel-inner{
+  position:absolute; inset:8px; /* inner white rectangle */
+  background:#fff;
+  border-radius: calc(var(--radius) - 6px);
+  display:grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap:10px;
+  padding:10px;
+  border: var(--border) solid #000;
+}
+.panel-frame::before{
+  /* orange frame layer */
+  content:"";
+  position:absolute; inset:0;
+  border-radius: var(--radius);
+  background: var(--orange);
+  opacity:0;
+  animation: frame-fade 800ms ease forwards;
+  animation-delay: 1700ms;
+}
+
+.panel-left{
+  display:flex; align-items:center; justify-content:flex-start;
+  padding:6px 10px;
+}
+#promptText{
+  font-family: "Press Start 2P", monospace;
+  font-size: clamp(12px, 2.2vw, 14px);
+  margin:0;
+}
+
+.panel-right{
+  display:grid; grid-template-columns: 1fr 1fr; gap:8px;
+  align-content:center; justify-items:stretch;
+}
+
+.action-btn{
+  font-family: "Press Start 2P", monospace;
+  font-size: clamp(11px, 2.2vw, 13px);
+  padding:12px 10px;
+  border-radius: 12px;
+  border: var(--border) solid #000;
+  background:#fff;
+  cursor:pointer;
+  transition: transform .08s ease, box-shadow .08s ease, background .2s ease;
+}
+.action-btn:focus-visible{ outline: 3px solid var(--orange-deep); outline-offset: 2px; }
+.action-btn:hover{ transform: translateY(-1px); box-shadow: 0 6px 0 #000; }
+.action-btn:active{ transform: translateY(0); box-shadow: none; }
+
+/* Hearts effect */
+.hearts{
+  position:absolute; inset:0; pointer-events:none; z-index:6;
+}
+.heart{
+  position:absolute;
+  font-size: 24px;
+  animation: heart-pop 900ms ease forwards;
+  filter: drop-shadow(0 6px 10px rgba(0,0,0,.15));
+}
+
+/* Modal + final screens */
+.modal, .final{
+  position:absolute; inset:0; display:grid; place-items:center;
+  background: rgba(0,0,0,.35);
+  z-index:20;
+}
+.modal-card, .final-card{
+  width:min(680px, 92vw);
+}
+.modal-frame, .final-frame{
+  background:#000; border-radius: var(--radius); border: var(--border) solid #000; position:relative;
+  animation: panel-reveal 400ms ease forwards;
+}
+.modal-frame::before, .final-frame::before{
+  content:"";
+  position:absolute; inset:0; background:var(--orange); border-radius: var(--radius);
+  opacity:1;
+}
+.modal-title, .final-text{
+  position:relative; z-index:1;
+  background:#fff; margin:10px; border-radius: calc(var(--radius) - 6px);
+  border: var(--border) solid #000;
+  padding: 18px 16px;
+  text-align:center;
+  font-family: "Press Start 2P", monospace;
+  font-size: clamp(14px, 2.6vw, 18px);
+}
+.big-btn{
+  position:relative; z-index:1;
+  display:block; width: min(360px, 80%); margin: 16px auto 20px;
+  padding: 16px 18px;
+  font-family: "Press Start 2P", monospace;
+  font-size: clamp(14px, 2.6vw, 18px);
+  background:#fff; border: var(--border) solid #000; border-radius: 14px;
+  cursor:pointer; transition: transform .08s ease, box-shadow .08s ease;
+}
+.big-btn:hover{ transform: translateY(-1px); box-shadow: 0 6px 0 #000; }
+.big-btn:active{ transform: translateY(0); box-shadow: none; }
+
+.final-text{
+  font-size: clamp(18px, 4vw, 24px);
+  padding: 26px 20px;
+}
+
+/* Animations */
+@keyframes opponent-enter{
+  from{ transform: translateX(0); left:-40%; }
+  to{ left: 46%; transform: translateX(0); } /* near center-right */
+}
+@keyframes player-enter{
+  from{ transform: translateX(0); right:-40%; }
+  to{ right: 38%; transform: translateX(0); } /* near center-left */
+}
+@keyframes pop-in{
+  to{ opacity:1; transform: translateY(0) scale(1); }
+}
+@keyframes fade-in{
+  to{ opacity:1; }
+}
+@keyframes panel-reveal{
+  from{ background:#000; }
+  to{ background:#000; } /* base stays black; orange/white handled separately */
+}
+@keyframes frame-fade{
+  from{ opacity:0; }
+  to{ opacity:1; }
+}
+@keyframes heart-pop{
+  0%{ transform: translateY(0) scale(.6); opacity:0; }
+  20%{ opacity:1; }
+  100%{ transform: translateY(-80px) scale(1.2); opacity:0; }
+}
+
+/* Responsiveness */
+@media (max-height: 560px){
+  :root{ --panel-h: 24vh; }
+}
+@media (max-width: 420px){
+  .stats{ width: 86vw; }
+  .panel-inner{ grid-template-columns: 1fr; grid-auto-rows: auto; }
+  .panel-right{ grid-template-columns: 1fr 1fr; }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce){
+  *{ animation: none !important; transition: none !important; }
+}
