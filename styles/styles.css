@@ -57,18 +57,24 @@ body{
   line-height:1;
   transform: translateZ(0);
 }
+
+/* ===== UPDATED: entrance positions + longer animation time =====
+   Opponent now animates from off-left to center-right (middle-right visually).
+   Player now animates from off-right to bottom-left (diagonally opposite).
+   Duration increased to 2000ms for a slower entrance.
+*/
 .sprite-opponent{
-  /* starts left, slides to mid-right */
+  /* starts off-screen left, slides to middle-right */
   left:-40%;
-  top:20%;
-  animation: opponent-enter 1100ms ease-out forwards;
+  top:30%;                    /* vertical position closer to middle */
+  animation: opponent-enter 2000ms cubic-bezier(.22,1,.36,1) forwards;
   animation-delay: 300ms;
 }
 .sprite-player{
-  /* starts off-screen bottom-right, slides to center-left */
-  right:-40%;
-  bottom: var(--panel-h);
-  animation: player-enter 1100ms ease-out forwards;
+  /* start off-screen right using left:110% then slide to bottom-left */
+  left:110%;
+  bottom: var(--panel-h);     /* retains same bottom offset above panel */
+  animation: player-enter 2000ms cubic-bezier(.22,1,.36,1) forwards;
   animation-delay: 300ms;
 }
 
@@ -92,7 +98,8 @@ body{
   z-index:3;
   opacity:0; transform: translateY(-8px) scale(.98);
   animation: pop-in 450ms ease-out forwards;
-  animation-delay: 1200ms;
+  /* increased delay so stats pop in after the longer sprite entrance finishes */
+  animation-delay: 2300ms;
 }
 .stats-opponent{ top:4%; left:4%; }
 .stats-player{
@@ -264,12 +271,14 @@ body{
 
 /* Animations */
 @keyframes opponent-enter{
-  from{ transform: translateX(0); left:-40%; }
-  to{ left: 46%; transform: translateX(0); } /* near center-right */
+  from{ left:-40%; }
+  /* land near middle-right horizontally; keep vertical top:30% as defined */
+  to{ left: 66%; } /* adjust number if you want it slightly closer/farther from center */
 }
 @keyframes player-enter{
-  from{ transform: translateX(0); right:-40%; }
-  to{ right: 38%; transform: translateX(0); } /* near center-left */
+  from{ left:110%; }
+  /* land at bottom-left (left small percentage); bottom preserved by element's bottom var */
+  to{ left: 8%; } /* bottom-left */
 }
 @keyframes pop-in{
   to{ opacity:1; transform: translateY(0) scale(1); }
