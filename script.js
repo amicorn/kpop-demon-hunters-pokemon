@@ -220,15 +220,28 @@ document.addEventListener('DOMContentLoaded', () => {
         birthdayCardPopup.setAttribute('aria-hidden', 'false');
         playSound(sounds.birthdayCard);
     }
+if (closeDerpyCardBtn) closeDerpyCardBtn.addEventListener('click', () => {
+    const slideDuration = 1000;
+    const fadeDuration = 1000;
 
-    if (closeDerpyCardBtn) closeDerpyCardBtn.addEventListener('click', () => {
-        const slideDuration = 1000;
-        const fadeDuration = 1000;
-        cardPopupImage.style.animation = `card-slide-down ${slideDuration}ms cubic-bezier(.22,1,.36,1) forwards`;
-        cardPopupContent.style.animation = `fade-out ${fadeDuration}ms forwards`;
-        playSound(sounds.cardDown);
-        setTimeout(hideCardPopup, slideDuration);
-    });
+    // Trigger animations
+    cardPopupImage.style.animation = `card-slide-down ${slideDuration}ms cubic-bezier(.22,1,.36,1) forwards`;
+    cardPopupContent.style.animation = `fade-out ${fadeDuration}ms forwards`;
+    playSound(sounds.cardDown);
+
+    // Wait for animation to finish before hiding
+    const totalDuration = Math.max(slideDuration, fadeDuration);
+    setTimeout(() => {
+        cardPopup.classList.add('card-popup-hidden');
+        cardPopup.setAttribute('aria-hidden', 'true');
+
+        // Reset animation for next open
+        cardPopupImage.style.animation = '';
+        cardPopupContent.style.animation = '';
+    }, totalDuration);
+});
+
+
 
     if (closeBirthdayCardBtn) closeBirthdayCardBtn.addEventListener('click', () => {
         birthdayCardPopup.classList.add('birthday-card-hidden');
@@ -246,19 +259,43 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     if (returnToJinuBtn) {
-        returnToJinuBtn.addEventListener('click', () => {
-            playSound(sounds.returnToJinu);
-            hideCardPopup();
+    returnToJinuBtn.addEventListener('click', () => {
+        playSound(sounds.returnToJinu);
+
+        // Trigger card-slide-down animation for the popup
+        const slideDuration = 1500; // match your CSS animation duration
+        const fadeDuration = 1000;
+
+        cardPopupImage.style.animation = `card-slide-down ${slideDuration}ms cubic-bezier(.22,1,.36,1) forwards`;
+        cardPopupContent.style.animation = `fade-out ${fadeDuration}ms forwards`;
+        playSound(sounds.cardDown);
+
+        // Wait for animation to finish before hiding completely
+        const totalDuration = Math.max(slideDuration, fadeDuration);
+        setTimeout(() => {
+            cardPopup.classList.add('card-popup-hidden');
+            cardPopup.setAttribute('aria-hidden', 'true');
+
+            // Reset animation for next open
+            cardPopupImage.style.animation = '';
+            cardPopupContent.style.animation = '';
+
+            // Also hide birthday card if open
             if (birthdayCardPopup) {
                 birthdayCardPopup.classList.add('birthday-card-hidden');
                 birthdayCardPopup.setAttribute('aria-hidden', 'true');
             }
+
+            // Show menu options again
             showOptions();
-        });
-        returnToJinuBtn.addEventListener('mouseenter', () => {
-            playSound(sounds.hoverSounds.backToOptionsBtn);
-        });
-    }
+        }, totalDuration);
+    });
+
+    returnToJinuBtn.addEventListener('mouseenter', () => {
+        playSound(sounds.hoverSounds.backToOptionsBtn);
+    });
+}
+
 
     // --- WIGGLE SPRITE ---
     function wiggleSprite(el, duration = 800) {
