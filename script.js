@@ -102,6 +102,33 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 60);
     }
 
+       // Close button
+document.getElementById('closeDerpyCardBtn').addEventListener('click', () => {
+    const popup = document.getElementById('cardPopup');
+    const img = document.getElementById('cardPopupImage');
+    const content = document.getElementById('cardPopupContent');
+
+    const slideDuration = 1000; // ms
+    const fadeDuration = 1000;  // ms
+
+    // Trigger animations
+    img.style.animation = `card-slide-down ${slideDuration}ms cubic-bezier(.22, 1, .36, 1) forwards`;
+    content.style.animation = `fade-out ${fadeDuration}ms forwards`;
+
+    // Hide popup after slideDuration
+    setTimeout(() => {
+        popup.classList.add('card-popup-hidden');
+        popup.setAttribute('aria-hidden', 'true');
+
+        // reset styles for next open
+        img.style.animation = '';
+        content.style.animation = '';
+    }, slideDuration);
+});
+
+
+
+
 
     // Hide card popup
     function hideCardPopup() {
@@ -119,10 +146,10 @@ document.addEventListener('DOMContentLoaded', () => {
         image.src = 'assets/Hello_Friend_Birthday_Card_Resized.png';
 
         text.innerHTML = `
-    <strong>💌 Happy Birthday dear Clara!! 💌</strong><br>
-      To my absolutely insanely wonderful bestie and roommate, —<br>
-      Wish you a day full of magic and sweet memories!.<br>
-      Hope you enjoy this kpop demon hunters x pokemon app I made for you. <br>
+    <strong>💌Happy Birthday Clara!!💌</strong><br>
+      To my absolutely insanely wonderful bestie and roommate,
+      Wish you a day full of magic and sweet memories!
+      Hope you enjoy this custom kpop demon hunters x pokemon app I made for you.
       I think Derpy tiger would be a grass-type pokemon, your fav🐯⻁ ^-^. <br>
       So much love, Amy xx 💖🎂
   `;
@@ -174,7 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (id === 'hugBtn') {
             // immediate hug feedback
-            promptText.textContent = 'HUNTRIX hugs DERPY TIGER!';
+            promptText.textContent = 'HUNTRIX hugs DERPY TIGER. Derpy is very happy and starts purring.';
             spawnHearts(30);
 
             // after short delay show card popup
@@ -194,7 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Example placeholders (not fleshed out)
         if (id === 'rapBtn') {
-            promptText.textContent = 'HUNTRIX drops a sick beat!';
+            promptText.textContent = 'Mirror mirror on my phone, who\'s the baddest? YOU, hello! 💖🎤';
             spawnHearts(30);
 
             // after short delay show card popup
@@ -220,7 +247,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (id === 'danceBtn') {
-            promptText.textContent = 'HUNTRIX starts break dancing.';
+            promptText.textContent = 'Better sit down for the show \'cause HUNTRIX starts break dancing!';
             spawnHearts(30);
 
             // after short delay show card popup

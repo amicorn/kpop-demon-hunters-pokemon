@@ -292,6 +292,8 @@ body {
 
 /* Share styles with action-btn */
 .action-btn,
+.open-card-btn,
+.derpy-close-btn,
 .birthday-close-btn {
   background: linear-gradient(145deg, #ff9cd6, #ff70c2);
   border: 2px solid #ff4fa5;
@@ -306,6 +308,8 @@ body {
 }
 
 .action-btn:hover,
+.open-card-btn:hover,
+.derpy-close-btn:hover,
 .birthday-close-btn:hover {
   background: linear-gradient(145deg, #ffb5e4, #ff7fcb);
   transform: scale(1.08);
@@ -313,6 +317,8 @@ body {
 }
 
 .action-btn:active,
+.open-card-btn:active,
+.derpy-close-btn:active,
 .birthday-close-btn:active {
   transform: scale(0.95);
   box-shadow: 0 3px 6px rgba(255, 80, 150, 0.5);
@@ -323,6 +329,20 @@ body {
   position: absolute;
   left: 40%;
   top: 100%;
+}
+
+.open-card-btn {
+  position: absolute;
+  left: 20%;
+  top: 110%;
+  width: 30%;
+}
+
+.derpy-close-btn {
+  position: absolute;
+  left: 52%;
+  top: 110%;
+  width: 30%;
 }
 
 
@@ -418,7 +438,7 @@ body {
 
 /* Animation only when active */
 .card-popup.showing .card-popup-img {
-    animation: card-slide-up 900ms cubic-bezier(.22, 1, .36, 1) forwards;
+    animation: card-slide-up 1000ms cubic-bezier(.22, 1, .36, 1) forwards;
 }
 
 .birthday-card-popup {
@@ -456,11 +476,11 @@ body {
 
 .birthday-card-text {
   position: absolute;
-  top: 65%;         
+  top: 67%;         
   left: 50%;
   transform: translate(-50%, -50%);
   width: 80%;        
-  max-width: 600px;  
+  max-width: 680px;  
   text-align: center;
   color: #ff00d4;
   text-shadow: 0 0 4px #ff69b4;
@@ -563,7 +583,7 @@ body {
 
 @keyframes card-slide-up {
     from {
-        transform: translateY(60px);
+        transform: translateY(600px);
         opacity: 0;
     }
 
@@ -576,6 +596,31 @@ body {
         opacity: 1;
     }
 }
+
+@keyframes card-slide-down {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    40% {
+        opacity: 1;
+    }
+    to {
+        transform: translateY(600px);
+        opacity: 0;
+    }
+}
+
+@keyframes overlay-fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
 
 /* Modal + final screens styles not required beyond this, kept minimal */
 /* Responsiveness */
