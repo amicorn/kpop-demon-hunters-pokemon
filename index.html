@@ -29,11 +29,14 @@
             <img src="assets/Huntrix_Resized.png" alt="RUMI / Huntrix" class="sprite-art player" />
         </div>
 
-        <!-- Opponent stats bubble (hidden until JS reveals) -->
+        <!-- Opponent stats bubble -->
         <div class="stats stats-opponent" id="opponentStats" aria-hidden="false">
             <div class="stats-row">
-                <span class="stats-name">DERPY TIGER</span>
-                <span class="stats-level">Lv.7</span>
+                <div class="stats-left">
+                    <span class="stats-name">DERPY TIGER</span>
+                    <img src="assets/Saja_Boys_logo_Resized.png" alt="Logo" class="stats-logo" />
+                </div>
+                <span class="stats-level">Lv 7</span>
             </div>
             <div class="hp">
                 <span class="hp-label">HP</span>
@@ -43,19 +46,23 @@
             </div>
         </div>
 
-        <!-- Player stats bubble (hidden until JS pressed) -->
+        <!-- Player stats bubble -->
         <div class="stats stats-player" id="playerStats" aria-hidden="false">
             <div class="stats-row">
-                <span class="stats-name">HUNTRIX</span>
+                <div class="stats-left">
+                    <span class="stats-name">HUNTRIX</span>
+                    <img src="assets/Huntrix_Logo_Resized.png" alt="Logo" class="stats-logo" />
+                </div>
                 <span class="stats-level">Lv.98</span>
             </div>
             <div class="hp">
                 <span class="hp-label">HP</span>
                 <div class="hp-bar">
-                    <div class="hp-fill" style="width:92%"></div>
+                    <div class="hp-fill" style="width:40%"></div>
                 </div>
             </div>
         </div>
+
 
         <!-- Bottom text panel -->
         <div class="panel" id="panel">
@@ -77,13 +84,25 @@
             <div class="card-popup-wrapper">
                 <div class="card-popup-content" id="cardPopupContent">
                     <div class="card-popup-text">🎉 Surprise! DERPY has a secret message for you! 🎉</div>
-                    <button class="card-popup-btn" id="openCardPopupBtn">OPEN CARD</button>
+                    <button class="action-btn" id="openCardPopupBtn">OPEN CARD</button>
                 </div>
 
                 <img id="cardPopupImage" class="card-popup-img" src="assets/Derpy_Tiger_card_resized.png"
                     alt="Derpy Tiger Card">
             </div>
         </div>
+
+        <!-- Birthday card popup -->
+<div class="birthday-card-popup birthday-card-hidden" id="birthdayCardPopup" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="birthday-card-wrapper">
+    <img id="birthdayCardImage" class="birthday-card-img" src="" alt="Birthday Card">
+    <div class="birthday-card-text" id="birthdayCardText"></div>
+    <button class="birthday-close-btn" id="closeBirthdayCardBtn">CLOSE</button>
+  </div>
+</div>
+
+
+
 
     </div>
 
