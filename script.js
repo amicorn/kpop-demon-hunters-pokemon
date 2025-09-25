@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cardDown: new Audio('assets/sfx/cat-meow-loud.mp3'),
         birthdayCard: new Audio('assets/music/sound-effect-twinklesparkle.mp3'),
         actionClick: new Audio('assets/sfx/sound-effect-twinklesparkle.mp3'),
-        returnToJinu: new Audio('assets/sfx/cute-cat.mp3.mp3'),
+        returnToJinu: new Audio('assets/sfx/pokemon-cry-parody.mp3'),
         playerHover: new Audio('assets/sfx/sound-effect-twinklesparkle.mp3'),
         opponentHover: new Audio('assets/sfx/cute-cat.mp3'),
         hoverSounds: {
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
             singBtn: new Audio('assets/music/shine-babe-k-pop-music.mp3'),
             danceBtn: new Audio('assets/music/stupid-stars-k-pop-music.mp3'),
             openCardPopupBtn: new Audio('assets/sfx/weird-pikachu.mp3'),
-            backToOptionsBtn: new Audio('assets/sfx/cute-cat.mp3')
+            backToOptionsBtn: new Audio('assets/sfx/eevee-voice-clips.mp3')
         }
     };
 
@@ -233,7 +233,7 @@ function showBirthdayCard() {
         My beautiful, brilliant, b-girling bestie - like Rumi/Zoey/Mira, you slay! <br>
         Derpy and I wish you a day filled with sugar, spice, and everything yay! 🥳 <br>
         Delivered via messenger tiger, your favourite grass-type 老虎 🐯, <br>
-        Enjoy this custom kpop demon hunters x pokemon app I made just for you! <br><br>
+        Enjoy this custom kpop demon hunters x pokémon app I made just for you! <br><br>
         So much love, Amy xx 💖🎂
     `;
     promptText.innerHTML = `<strong>DERPY TIGER opens his mouth, revealing a special birthday card for YOU! 💌</strong><br><br>💖🎂🐯`;
@@ -244,7 +244,12 @@ if (closeBirthdayCardBtn) closeBirthdayCardBtn.addEventListener('click', () => {
     const container = document.getElementById('birthdayCardContainer');
     const slideDuration = 1000;
 
-    container.style.animation = `card-slide-down ${slideDuration}ms cubic-bezier(.22,1,.36,1) forwards`;
+    const birthdayCardImage = document.getElementById('birthdayCardImage');
+    const birthdayCardText = document.getElementById('birthdayCardText');
+
+    birthdayCardImage.style.animation = `card-slide-down ${slideDuration}ms cubic-bezier(.22,1,.36,1) forwards`;
+    birthdayCardText.style.animation = `card-slide-down ${slideDuration}ms cubic-bezier(.22,1,.36,1) forwards`;
+
     playSound(sounds.cardDown);
 
     setTimeout(() => {
@@ -252,7 +257,8 @@ if (closeBirthdayCardBtn) closeBirthdayCardBtn.addEventListener('click', () => {
         birthdayCardPopup.setAttribute('aria-hidden', 'true');
 
         // Reset animation for next open
-        container.style.animation = '';
+        birthdayCardImage.style.animation = '';
+        birthdayCardText.style.animation = '';
     }, slideDuration);
 });
 
