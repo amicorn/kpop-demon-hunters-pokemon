@@ -1,7 +1,7 @@
 # KPop Demon Hunters x Pokémon Dance Battle 💃🐯🎂💌
 
 ## Overview
-Made this Pokémon battle x Kpop Demon Hunters game as a birthday gift for my wonderful friend. This project blends retro Nintendo Pokémon battle mechanics with characters & animals from the KPop Demon Hunters movie. :)
+Made this Pokémon battle x Kpop Demon Hunters game as a birthday gift for my wonderful friend. This project blends retro Nintendo Pokémon battle mechanics with characters & story lore from the KPop Demon Hunters movie. :)
 
 **Live Demo: https://amicorn.github.io/kpop-demon-hunters-pokemon/**
 
@@ -39,25 +39,25 @@ I imagine if Derpy Tiger from Kpop Demon Hunters were to be a Pokémon, he would
 
 Decided to design this game like a retro nintendo Pokémon battle, which I feel would be in line with the spirit of the KPop Demon Hunters characters since they'd totally do dance battles and rap battles and fight with their spirit animals. 
 
-## 🎭 Animations & retro Pokémon mechanics
+## Animations & retro Pokémon mechanics
 I designed & coded this game inspiried by the "GameBoy Advance" era Pokémon aesthetic while integrating lore from the KPop Demon Hunters movie.
 
-* **Battlefield slide-in:** Mimics the classic start of a Hoenn-region battle. The trainer and wild Pokémon slide onto the screen from opposite sides using CSS `transform` and `transition` triggered via JS.
+* **Battlefiel slide-in:** Mimics the classic start of a Hoenn-region battle. The trainer and wild Pokémon slide onto the screen from opposite sides using CSS `transform` and `transition` triggered via JS.
 * **Sprite wiggle:** Pokémon sprites "wiggle" when they perform a move. This is handled by a custom `wiggleSprite()` function using `requestAnimationFrame` to ensure rotation doesn't break the slide-in position.
 * **Tactile UI:** Hovering over character logos triggers a scale enlargement (`scale(1.2)`), providing immediate visual feedback to the player.
 * **Vertical popups:** The Derpy Tiger card pops up vertically, directly referencing the specific way Derpy appears to Rumi in the film.
 * **Heart particle effect:** A dynamic DOM-injection system spawns 💖 particles at the opponent's coordinates with randomized drift and scale for successful interactions.
 
-## 💻 Technical highlights
+## Technical highlights
 I made this to be a fun and creative project referencing pop culture (KPop Demon Hunters, Pokémon), using art and pop culture to bridge CS logic + engineering principles:
 
-* **Modular Rendering Logic:** Separation of concerns between `renderer.js` (DOM construction) and `script.js` (state and event handling).
-* **Event Delegation:** Instead of attaching listeners to every individual button, the game uses a single listener on the `buttons` container to efficiently manage clicks and hovers.
-* **Safe Resource Loading:** Implements a `loadImageSafe` helper to verify asset existence before rendering, preventing "broken image" UI states.
-* **Sophisticated Audio Engine:** Manages a multi-layered audio system that allows global BGM to persist while handling interruptible SFX and unique hover-audio loops.
-* **Performance Optimization:** Animations leverage hardware-accelerated CSS properties (`transform` and `opacity`) rather than layout-triggering properties, maintaining a smooth 60fps.
+* **Modular rendering logic:** Separation of concerns between `renderer.js` (DOM construction) and `script.js` (state and event handling).
+* **Event delegation:** Instead of attaching listeners to every individual button, the game uses a single listener on the `buttons` container to efficiently manage clicks and hovers.
+* **Safe resource loading:** Implements a `loadImageSafe` helper to verify asset existence before rendering, preventing "broken image" UI states.
+* **Audio Engine:** Manages a multi-layered audio system that allows global BGM to persist while handling interruptible SFX and unique hover-audio loops.
+* **Performance optimization:** Animations leverage hardware-accelerated CSS properties (`transform` and `opacity`) rather than layout-triggering properties, maintaining a smooth 60fps.
 
-  
+## References 
 ### Pokemon Battle Menu Screen
 For my battle menu screen design, 
 <img src="screenshots/menu screen large.png" width="1000"> 
@@ -77,8 +77,9 @@ I referenced:
 Source: https://share.google/nRP5V15qSpUO9pIf4 (Youtube video: https://www.youtube.com/watch?v=8Ejk0q42hQQ)
 
 
-## Assets
-All art hand-drawn by Amy Ouyang, including:
+## Credits
+Code, design, and art by Amy Ouyang.
+All art is original and hand-drawn by Amy Ouyang, including:
 - derpy tiger has a letter for you card
 - birthday card
 - huntrix player logo
