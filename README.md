@@ -18,7 +18,7 @@ Made this Pokémon battle x Kpop Demon Hunters game as a birthday gift for my wo
 | Game Phase | Screenshot | Dialogue / Interaction | User Options |
 | :--- | :---: | :---: | :--- |
 | **Wild Encounter** | <img src="screenshots/a%20wild%20derpy%20tiger%20appeared.png" width="600" alt="Start Screen"> | "A wild **DERPY TIGER** appeared!" | User can "Meet Derpy Tiger"
-| **Battle Menu** | <img src="screenshots/what will huntrix do.png" width="600" alt="Menu"> | "What will **HUNTRIX** do?" | User can select: RAP BATTLE, HUG, SLAY, or DANCE buttons |
+| **Battle Menu** | <img src="screenshots/menu screen large.png" width="600" alt="Menu"> | "What will **HUNTRIX** do?" | User can select: RAP BATTLE, HUG, SLAY, or DANCE buttons |
 | **Secret Message** | <img src="screenshots/derpy has letter large.png" width="600" alt="Secret Message"> | "🎉 Surprise! **DERPY** has a secret message for you! 🎉 " | User can "Open Card" or "Return to Jinu" (Return to sender) |
 | **Birthday Surprise** | <img src="screenshots/birthday%20card%20popup.png" width="600" alt="Birthday Card"> | "**DERPY TIGER** opens his mouth, revealing a special birthday card for YOU! 💌🎂🐯" | User can "Close" the letter popup and return to menu screen |
 
@@ -26,7 +26,7 @@ Made this Pokémon battle x Kpop Demon Hunters game as a birthday gift for my wo
 | Battle Menu Option | Screenshot | Text |
 | :--- | :---: | :--- |
 | **RAP BATTLE** | <img src="screenshots/rap battle button message.png" width="600" alt="Start Screen"> | "Mirror mirror on my phone, who's the baddest? YOU, hello! 💖🎤" | 
-| **HUG** | <img src="screenshots/bug button message.png" width="600" alt="Menu"> | "**HUNTRIX** hugs **DERPY TIGER**. Derpy is very happy and starts purring." | 
+| **HUG** | <img src="screenshots/hug button message.png" width="600" alt="Menu"> | "**HUNTRIX** hugs **DERPY TIGER**. Derpy is very happy and starts purring." | 
 | **SLAY** | <img src="screenshots/slay button message.png" width="600" alt="Secret Message"> | "**HUNTRIX** slays the real enemy: the flower pot that won't stay upright!" |
 | **DANCE** | <img src="screenshots/dance button message.png" width="600" alt="Birthday Card"> | "Better sit down for the show 'cause **HUNTRIX** starts break dancing!" |
 
