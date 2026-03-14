@@ -3,6 +3,8 @@
 ## Overview
 Made this Pokémon battle x Kpop Demon Hunters game as a birthday gift for my wonderful friend :)
 
+Website: https://amicorn.github.io/kpop-demon-hunters-pokemon/
+
 ## Screenshots
 <img src="screenshots/kdh pokemon battle start screen.png" width="1000"> 
 
